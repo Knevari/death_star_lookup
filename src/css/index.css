@@ -1,0 +1,76 @@
+html, body {
+  background-color: #1e2328;
+  background: -webkit-linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.8)),
+  #1e2328 url("../assets/img/death_star.jpg") no-repeat center fixed;
+  background: -o-linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.8)),
+  #1e2328 url("../assets/img/death_star.jpg") no-repeat center fixed;
+  background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.8)),
+  #1e2328 url("../assets/img/death_star.jpg") no-repeat center fixed;
+  background-size: cover;
+  color: #f5f5f5 !important;
+}
+
+.character {
+  color: #1e2328;
+}
+
+.character ul {
+  list-style: none;
+  padding-left: 5px;
+  max-width: 500px;
+}
+
+.character ul.has-modal li.info-modal-title {
+  color: #9E0F18;
+  position: relative;
+  margin-bottom: 2px;
+}
+
+.character ul.has-modal li.info-modal-title::before {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 1px;
+  height: 2px;
+  background-color: #9E0F18;
+  transition: all .2s ease-in-out;
+}
+
+.character ul.has-modal li.info-modal-title:hover::before {
+  width: 25px;
+}
+
+.title {
+  color: #D7C078;
+  font-family: "Star Wars";
+  font-size: 1.4rem;
+}
+
+.character-list-item {
+  color: #222;
+  margin-top: 1px;
+  cursor: pointer;
+}
+
+.character-details h1 {
+  color: #1e2328;
+  margin-left: -5px;
+}
+
+.loader {
+  width: 100%;
+  min-height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.info-modal * {
+  color: #fff !important;
+  background-color: #1e2328;
+}
+
+.trigger-info-modal {
+  cursor: pointer;
+}
