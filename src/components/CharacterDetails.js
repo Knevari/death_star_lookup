@@ -3,6 +3,7 @@ import { Jumbotron } from "reactstrap";
 import { StarWarsConsumer } from "./StarWarsContext";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import InfoModal from "./InfoModal";
+import decimal from '../utils/decimal';
 
 const CharacterDetails = () => {
   return (
@@ -35,14 +36,18 @@ const CharacterDetails = () => {
                 <h4>{character.vehicles.length ? "Veículos: " : null}</h4>
                 <ul className="has-modal">
                   {character.vehicles.map((vehicle, index) => {
+                    const cost = decimal(vehicle.cost_in_credits);
+                    const cargo = decimal(vehicle.cargo_capacity);
+                    const length = decimal(vehicle.length);
+
                     return (
                       <InfoModal title={vehicle.name} key={index} trigger={<li className="info-modal-title">{vehicle.name || <Skeleton />}</li>}>
                         <h5>Modelo:</h5><p>{vehicle.model}</p>
-                        <h5>Valor:</h5><p>{vehicle.cost_in_credits}</p>
+                        <h5>Valor:</h5><p>{cost ? cost + " Créditos" : "Desconhecido"}</p>
                         <h5>Quantidade de Passageiros:</h5><p>{vehicle.passengers}</p>
-                        <h5>Capacidade de Carga:</h5><p>{vehicle.cargo_capacity}</p>
+                        <h5>Capacidade de Carga:</h5><p>{cargo ? cargo + " kg" : "Desconhecido"}</p>
                         <h5>Classe do Veículo:</h5><p>{vehicle.vehicle_class}</p>
-                        <h5>Largura:</h5><p>{vehicle.length}</p>
+                        <h5>Largura:</h5><p>{length ? length + " m" : "Desconhecido"}</p>
                       </InfoModal>
                     )
                   })}
@@ -69,14 +74,18 @@ const CharacterDetails = () => {
                 <h4>{character.starships.length ? "Starships: " : null}</h4>
                 <ul className="has-modal">
                   {character.starships.map((starship, index) => {
+                    const cost = decimal(starship.cost_in_credits);
+                    const cargo = decimal(starship.cargo_capacity);
+                    const length = decimal(starship.length);
+
                     return (
                       <InfoModal title={starship.name} key={index} trigger={<li className="info-modal-title">{starship.name || <Skeleton />}</li>}>
                         <h5>Modelo:</h5><p>{starship.model}</p>
                         <h5>Fabricante:</h5><p>{starship.manufacturer}</p>
-                        <h5>Valor:</h5><p>{starship.cost_in_credits} Créditos</p>
-                        <h5>Largura:</h5>  <p>{starship.length}m</p>
+                        <h5>Valor:</h5><p>{cost ? cost + " Créditos" : "Desconhecido"}</p>
+                        <h5>Largura:</h5><p>{length ? length + " m" : "Desconhecido"}</p>
                         <h5>Velocidade Máxima na Atmosfera:</h5><p>{starship.max_atmosphering_speed}km</p>
-                        <h5>Capacidade de Carga:</h5><p>{starship.cargo_capacity}kg</p>
+                        <h5>Capacidade de Carga:</h5><p>{cargo ? cargo + " kg" : "Desconhecido"}</p>
                         <h5>Classe da Nave:</h5><p>{starship.starship_class}</p>
                         <h5>Classe do Hyperdrive:</h5><p>{starship.hyperdrive_rating}</p>
                       </InfoModal>

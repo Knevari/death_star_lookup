@@ -10,6 +10,8 @@ import { Container } from "reactstrap";
 import { StarWarsProvider, StarWarsConsumer } from "./StarWarsContext";
 import { PulseLoader } from 'halogenium';
 
+/* Rota customizada para carregar a página de detalhes
+ Somente se o usuário possui algum personagem selecionado */
 const DetailsRoute = ({ component: Component, ...rest}) => {
   return (
     <StarWarsConsumer>
@@ -68,6 +70,7 @@ class DeathStarLookup extends Component {
   selectCharacter = (character, history, updateSelectedCharacter) => {
     updateSelectedCharacter(character);
     history.push("/lookup/details/" + encodeURIComponent(character.name));
+    document.title = "Lookup - " + character.name;
   }
 
   render() {
@@ -75,13 +78,12 @@ class DeathStarLookup extends Component {
 
     return (
       <Container className="pt-3">
-        <h3 className="title">Death Star Lookup</h3>
+        <h3 className="app-title">Death Star Lookup</h3>
         <SearchInput
           disabled={loading}
           handleSearchInput={e => this.handleSearch(e.target.value.replace(" ", "+"))}/>
         <BrowserRouter>
           <Switch>
-            <Route path="/vader" render={() => <h1>I am your father!</h1>} />
             <Route path="/lookup" render={(props) => (
                 <StarWarsProvider>
                   {loading ?
@@ -94,7 +96,8 @@ class DeathStarLookup extends Component {
                       totalPages={totalPages}
                       changePage={this.changePage}
                       characters={characters}
-                      selectCharacter={this.selectCharacter}>
+                      selectCharacter={this.selectCharacter}
+                    >
                         <DetailsRoute exact component={CharacterDetails} />
                     </SearchResult>}
                 </StarWarsProvider>

@@ -8,7 +8,6 @@ const SearchResult = ({ characters, selectCharacter, children, page, totalPages,
     <Fragment>
       {characters.length > 0 ? (
         <ListGroup className="my-3">
-
           {characters.map((character, index) =>
             <Character
               {...rest}
@@ -16,18 +15,22 @@ const SearchResult = ({ characters, selectCharacter, children, page, totalPages,
               character={character}
               key={character.name}
               index={index} />)}
-
-              <ButtonToolbar className="mt-2 mx-auto">
-                <ButtonGroup>
-                  {totalPages > 1 ? (
-                    <Fragment>
-                      <Button className="change-page-btn" disabled={page === 1} onClick={() => changePage(page - 1)}>Anterior</Button>
-                      <Button className="change-page-btn" disabled={page === totalPages} onClick={() => changePage(page + 1)}>Próximo</Button>
-                    </Fragment>
-                  ) : null}
-                </ButtonGroup>
-              </ButtonToolbar>
-
+              {totalPages > 1 ? (
+                <ButtonToolbar className="mt-2 mx-auto">
+                  <ButtonGroup>
+                    <Button
+                      color="danger"
+                      className="change-page-btn"
+                      disabled={page === 1}
+                      onClick={() => changePage(page - 1)}>Anterior</Button>
+                    <Button
+                      color="danger"
+                      className="change-page-btn"
+                      disabled={page === totalPages}
+                      onClick={() => changePage(page + 1)}>Próximo</Button>
+                  </ButtonGroup>
+                </ButtonToolbar>
+              ) : null}
           </ListGroup>
       ) : <h3 className="mt-3">Não foram encontrados resultados</h3>}
       {children}
@@ -41,4 +44,4 @@ SearchResult.propTypes = {
   children: PropTypes.any.isRequired
 }
 
-export default SearchResult
+export default SearchResult;

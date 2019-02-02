@@ -3,6 +3,8 @@ import axios from "axios";
 
 const StarWarsContext = createContext();
 
+// Aqui está toda a lógica de substituição
+// das URLs contidas na resposta da API
 export class StarWarsProvider extends Component {
   constructor(props) {
     super(props);
@@ -22,13 +24,13 @@ export class StarWarsProvider extends Component {
       return items;
     }
 
-    this.updateCharacterProperty = (prop) => {
-      this.fetchData(this.state.selectedCharacter[prop])
+    this.updateCharacterProperty = (property) => {
+      this.fetchData(this.state.selectedCharacter[property])
         .then(data => {
           this.setState(prevState => ({
             selectedCharacter:  {
               ...prevState.selectedCharacter,
-              [prop]: data
+              [property]: data
             }
           }))
         })
@@ -45,6 +47,11 @@ export class StarWarsProvider extends Component {
       }
     }
 
+    this.loadFavoriteCharactersFromSession = () => {
+      const favoriteCharacters = JSON.parse(sessionStorage.getItem("favoriteCharacters")) || [];
+      this.setState({ favoriteCharacters })
+    }
+
     this.state = {
       selectedCharacter: null,
       favoriteCharacters: [],
@@ -56,6 +63,7 @@ export class StarWarsProvider extends Component {
 
   componentDidMount() {
     this.getCharacterData();
+    this.loadFavoriteCharactersFromSession()
   }
 
   render() {

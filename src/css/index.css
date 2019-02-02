@@ -12,6 +12,7 @@ html, body {
 
 .character {
   color: #1e2328;
+  position: relative;
 }
 
 .character ul {
@@ -41,16 +42,28 @@ html, body {
   width: 25px;
 }
 
-.title {
+.app-title {
   color: #D7C078;
   font-family: "Star Wars";
   font-size: 1.4rem;
 }
 
 .character-list-item {
-  color: #222;
-  margin-top: 1px;
+  color: #fff;
+  margin-bottom: 4px;
   cursor: pointer;
+  background-color: #822339;
+  border-bottom: 4px solid #430F01;
+  transition: all .12s ease-out;
+}
+
+.character-list-item:hover {
+  background-color: #430F01;
+}
+
+.character-list-item:active {
+  background-color: #430F01;
+  border-bottom: 2px solid #1e2328;
 }
 
 .character-details h1 {
