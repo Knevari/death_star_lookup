@@ -112,9 +112,9 @@ html, body {
   cursor: pointer;
 }
 
-.favorites-link a {
+.favorites-link {
   color: var(--white) !important;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 .favorite {

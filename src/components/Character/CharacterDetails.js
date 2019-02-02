@@ -107,9 +107,11 @@ const CharacterDetails = () => {
                     color="warning"
                     onClick={() => context.addToFavorites(character)}>Adicionar aos favoritos</Button>}
 
-                <Button className="favorites-link mt-2" block color="info">
-                  <Link to="/favorites">Ver minha lista de favoritos</Link>
-                </Button>
+                <Link className="favorites-link" to="/favorites">
+                  <Button className="mt-2" block color="info">
+                    Ver minha lista de favoritos
+                  </Button>
+                </Link>
               </div>
             </SkeletonTheme>
 
