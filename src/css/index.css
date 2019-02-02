@@ -1,17 +1,26 @@
+:root {
+  --white: #fff;
+  --black: #1e2328;
+  --red: #9E0F18;
+  --dark-yellow: #D7C078;
+  --dark-red: #822339;
+  --darker-red: #430F01;
+}
+
 html, body {
-  background-color: #1e2328;
+  background-color: var(--black);
   background: -webkit-linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.8)),
-  #1e2328 url("../assets/img/death_star.jpg") no-repeat center fixed;
+  var(--black) url("../assets/img/death_star.jpg") no-repeat center fixed;
   background: -o-linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.8)),
-  #1e2328 url("../assets/img/death_star.jpg") no-repeat center fixed;
+  var(--black) url("../assets/img/death_star.jpg") no-repeat center fixed;
   background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.8)),
-  #1e2328 url("../assets/img/death_star.jpg") no-repeat center fixed;
+  var(--black) url("../assets/img/death_star.jpg") no-repeat center fixed;
   background-size: cover;
   color: #f5f5f5 !important;
 }
 
 .character {
-  color: #1e2328;
+  color: var(--black);
   position: relative;
 }
 
@@ -22,7 +31,7 @@ html, body {
 }
 
 .character ul.has-modal li.info-modal-title {
-  color: #9E0F18;
+  color: var(--red);
   position: relative;
   margin-bottom: 2px;
 }
@@ -34,7 +43,7 @@ html, body {
   left: 0;
   width: 1px;
   height: 2px;
-  background-color: #9E0F18;
+  background-color: var(--red);
   transition: all .2s ease-in-out;
 }
 
@@ -42,32 +51,42 @@ html, body {
   width: 25px;
 }
 
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .app-title {
-  color: #D7C078;
   font-family: "Star Wars";
-  font-size: 1.4rem;
+  font-size: 1.5rem;
+}
+
+.app-title a {
+  color: var(--dark-yellow);
+  text-decoration: none;
 }
 
 .character-list-item {
-  color: #fff;
+  color: var(--white);
   margin-bottom: 4px;
   cursor: pointer;
-  background-color: #822339;
-  border-bottom: 4px solid #430F01;
+  background-color: var(--dark-red);
+  border-bottom: 4px solid var(--darker-red);
   transition: all .12s ease-out;
 }
 
 .character-list-item:hover {
-  background-color: #430F01;
+  background-color: var(--darker-red);
 }
 
 .character-list-item:active {
-  background-color: #430F01;
-  border-bottom: 2px solid #1e2328;
+  background-color: var(--darker-red);
+  border-bottom: 2px solid var(--black);
 }
 
 .character-details h1 {
-  color: #1e2328;
+  color: var(--black);
   margin-left: -5px;
 }
 
@@ -80,10 +99,31 @@ html, body {
 }
 
 .info-modal * {
-  color: #fff !important;
-  background-color: #1e2328;
+  color: var(--white) !important;
+  background-color: var(--black);
+  border: 0;
+}
+
+.info-modal {
+  box-shadow: 0 0 1.8rem rgba(0, 0, 0, 1);
 }
 
 .trigger-info-modal {
   cursor: pointer;
+}
+
+.favorites-link a {
+  color: var(--white) !important;
+  text-decoration: none;
+}
+
+.favorite {
+  color: var(--dark-yellow);
+  cursor: pointer;
+  position: relative;
+  transition: color .12s ease-in-out;
+}
+
+.favorite:hover {
+  color: #f74d4d;
 }

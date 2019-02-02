@@ -1,16 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { ListGroupItem } from "reactstrap";
-import { StarWarsConsumer } from "./StarWarsContext";
+import { StarWarsConsumer } from "../StarWarsContext";
 
-const Character = ({ character, characterSelectionHandler, history }) => {
+const Character = ({ character, selectCharacter, history }) => {
   return (
     <StarWarsConsumer>
       {context =>
         <ListGroupItem
-          onClick={() => characterSelectionHandler(character, history, context.updateSelectedCharacter)}
+          onClick={() => selectCharacter(character, history, context.updateSelectedCharacter)}
           className="character-list-item"
-          >
+        >
           <h5 to={"/lookup/details/" + encodeURIComponent(character.name)}>{character.name}</h5>
         </ListGroupItem>
       }
@@ -20,7 +20,7 @@ const Character = ({ character, characterSelectionHandler, history }) => {
 
 Character.propTypes = {
   character: PropTypes.object.isRequired,
-  characterSelectionHandler: PropTypes.func.isRequired
+  selectCharacter: PropTypes.func.isRequired
 }
 
 export default Character;

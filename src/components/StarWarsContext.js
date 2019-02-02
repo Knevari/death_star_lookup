@@ -48,16 +48,32 @@ export class StarWarsProvider extends Component {
     }
 
     this.loadFavoriteCharactersFromSession = () => {
-      const favoriteCharacters = JSON.parse(sessionStorage.getItem("favoriteCharacters")) || [];
+      const favoriteCharacters = JSON.parse(sessionStorage.getItem("favoriteCharacters")) || {};
       this.setState({ favoriteCharacters })
+    }
+
+    this.addToFavorites = (character) => {
+      let favoriteCharacters = JSON.parse(sessionStorage.getItem("favoriteCharacters")) || {};
+      favoriteCharacters = {...favoriteCharacters, [character.name]: character};
+      this.setState({ favoriteCharacters });
+      sessionStorage.setItem("favoriteCharacters", JSON.stringify(favoriteCharacters));
+    }
+
+    this.removeFromFavorites = (characterName) => {
+      let favoriteCharacters = JSON.parse(sessionStorage.getItem("favoriteCharacters")) || {};
+      delete favoriteCharacters[characterName];
+      this.setState({ favoriteCharacters });
+      sessionStorage.setItem("favoriteCharacters", JSON.stringify(favoriteCharacters));
     }
 
     this.state = {
       selectedCharacter: null,
-      favoriteCharacters: [],
+      favoriteCharacters: {},
       updateSelectedCharacter: this.updateSelectedCharacter,
       updateCharacterProperty: this.updateCharacterProperty,
-      getCharacterData: this.getCharacterData
+      getCharacterData: this.getCharacterData,
+      addToFavorites: this.addToFavorites,
+      removeFromFavorites: this.removeFromFavorites
     }
   }
 

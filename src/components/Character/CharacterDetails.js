@@ -1,9 +1,10 @@
 import React from "react";
-import { Jumbotron } from "reactstrap";
-import { StarWarsConsumer } from "./StarWarsContext";
+import { Link } from "react-router-dom";
+import { Jumbotron, Button } from "reactstrap";
+import { StarWarsConsumer } from "../StarWarsContext";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import InfoModal from "./InfoModal";
-import decimal from '../utils/decimal';
+import InfoModal from "../Modal/InfoModal";
+import decimal from '../../utils/decimal';
 
 const CharacterDetails = () => {
   return (
@@ -14,7 +15,8 @@ const CharacterDetails = () => {
         return (
           <Jumbotron className="character">
             <div className="character-details mb-4">
-              <h1>{character.name}</h1>
+              <h1>{character.name} {character.name in context.favoriteCharacters ?
+                  <span onClick={() => context.removeFromFavorites(character.name)} className="favorite">&#9733;</span> : null}</h1>
               <h6>Altura: {character.height}</h6>
               <h6>Peso: {character.mass}kg</h6>
               <h6>Cor do Cabelo: {character.hair_color}</h6>
@@ -93,7 +95,24 @@ const CharacterDetails = () => {
                   })}
                 </ul>
               </div>
+
+              <div className="add-to-favorites">
+                {character.name in context.favoriteCharacters ?
+                  <Button
+                    block
+                    color="danger"
+                    disabled>Personagem já adicionado</Button> :
+                  <Button
+                    block
+                    color="warning"
+                    onClick={() => context.addToFavorites(character)}>Adicionar aos favoritos</Button>}
+
+                <Button className="favorites-link mt-2" block color="info">
+                  <Link to="/favorites">Ver minha lista de favoritos</Link>
+                </Button>
+              </div>
             </SkeletonTheme>
+
           </Jumbotron>
         )
       }}

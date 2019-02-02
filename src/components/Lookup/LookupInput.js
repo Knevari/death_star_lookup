@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { InputGroup, Input } from "reactstrap";
 
-const SearchInput = ({ handleSearchInput }) => {
+const LookupInput = ({ handleSearch }) => {
   return (
     <InputGroup size="lg">
       <Input
@@ -10,13 +10,13 @@ const SearchInput = ({ handleSearchInput }) => {
         spellCheck="false"
         autoComplete="off"
         placeholder="e.g. Yoda"
-        onChange={handleSearchInput} />
+        onChange={handleSearch} />
     </InputGroup>
   )
 }
 
-SearchInput.propTypes = {
-  handleSearchInput: PropTypes.func.isRequired
+LookupInput.propTypes = {
+  handleSearch: PropTypes.func.isRequired
 }
 
-export default SearchInput;
+export default LookupInput;
