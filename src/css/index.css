@@ -59,6 +59,7 @@ html, body {
 
 .app-title {
   font-family: "Star Wars";
+  color: var(--dark-yellow);
   font-size: 1.5rem;
 }
 

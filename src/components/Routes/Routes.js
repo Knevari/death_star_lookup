@@ -19,7 +19,7 @@ export default (props) => {
             <LookupInput
               disabled={props.loading}
               handleSearch={e => props.handleSearch(e.target.value.replace(" ", "+"))}
-              />
+            />
             {props.loading ?
             <div className="loader"> <PulseLoader color="#E7AA44" size="16px" margin="4px"/> </div> :
               <LookupResult
@@ -32,6 +32,7 @@ export default (props) => {
                 >
                 <DetailsRoute exact component={CharacterDetails} />
             </LookupResult>}
+            <Favorites main />
           </Fragment>
           )} />
         <Route exact path="/" render={() => <Redirect to="/lookup" />} />

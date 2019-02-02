@@ -1,10 +1,11 @@
 import React, { Fragment } from "react";
 import { StarWarsConsumer } from "../StarWarsContext";
-import { Card, Button, CardTitle, CardText, CardColumns,
- CardSubtitle, CardBody } from 'reactstrap';
+import { Card, Button, CardTitle, CardBody, CardColumns } from 'reactstrap';
 import { NavLink } from "react-router-dom";
 
-const Favorites = () => {
+const Favorites = ({ main }) => {
+  const title = !main ? <h3 className="app-title"><NavLink to="/">Death Star Lookup</NavLink></h3> : <h1 className="app-title">Favoritos</h1>
+
   return (
     <StarWarsConsumer>
       {context => {
@@ -20,12 +21,12 @@ const Favorites = () => {
 
         return (
           <Fragment>
-            <h3 className="app-title"><NavLink to="/">Death Star Lookup</NavLink></h3>
+            {title}
             <CardColumns>
               {favorites.map(favorite => (
                 <Card key={favorite.name} body inverse style={{ backgroundColor: '#333', borderColor: '#333' }}>
                   <CardTitle><h2>{favorite.name}</h2></CardTitle>
-                  <CardText>
+                  <CardBody>
                     <div className="character-details mb-4">
                       <h6>Altura: {favorite.height}</h6>
                       <h6>Peso: {favorite.mass}kg</h6>
@@ -34,9 +35,11 @@ const Favorites = () => {
                       <h6>Cor dos Olhos: {favorite.eye_color}</h6>
                       <h6>Ano de Nascimento: {favorite.birth_year}</h6>
                       <h6>Gênero: {favorite.gender}</h6>
+                      <h6>Terra Natal: {favorite.homeworld.name}</h6>
                     </div>
-                  </CardText>
+                  </CardBody>
                   <Button
+                    block
                     onClick={() => context.removeFromFavorites(favorite.name)}
                     color="danger">Remover</Button>
                 </Card>

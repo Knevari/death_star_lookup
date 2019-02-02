@@ -14,14 +14,19 @@ export class StarWarsProvider extends Component {
     }
 
     this.fetchData = async (data) => {
-      const items = [];
+      if(Array.isArray(data)) {
+        const items = [];
 
-      for(let item of data) {
-        const response = await axios.get(item);
-        items.push(response.data);
+        for(let item of data) {
+          const response = await axios.get(item);
+          items.push(response.data);
+        }
+
+        return items;
+      } else {
+        const response = await axios.get(data);
+        return response.data;
       }
-
-      return items;
     }
 
     this.updateCharacterProperty = (property) => {
@@ -38,10 +43,12 @@ export class StarWarsProvider extends Component {
 
     this.getCharacterData = () => {
       if(this.state.selectedCharacter) {
+        // TODO: Criar uma função pra iterar sobre as urls
         this.updateCharacterProperty("species");
         this.updateCharacterProperty("films");
         this.updateCharacterProperty("vehicles");
         this.updateCharacterProperty("starships");
+        this.updateCharacterProperty("homeworld");
       } else {
         return false;
       }

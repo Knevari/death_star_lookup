@@ -24,6 +24,7 @@ const CharacterDetails = () => {
               <h6>Cor dos Olhos: {character.eye_color}</h6>
               <h6>Ano de Nascimento: {character.birth_year}</h6>
               <h6>Gênero: {character.gender}</h6>
+              <h6>Terra Natal: {character.homeworld.name}</h6>
             </div>
 
             <SkeletonTheme color="#ccc">
