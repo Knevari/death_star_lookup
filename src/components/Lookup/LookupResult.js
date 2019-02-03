@@ -3,14 +3,14 @@ import PropTypes from "prop-types";
 import Character from "../Character";
 import { ButtonGroup, Button, ButtonToolbar, ListGroup } from "reactstrap";
 
-const LookupResult = ({ characters, selectCharacter, children, page, totalPages, changePage, ...rest }) => {
+const LookupResult = ({ characters, selectCharacter, children, page, totalPages, changePage, history }) => {
   return (
     <Fragment>
       {characters.length > 0 ? (
         <ListGroup className="my-3">
           {characters.map((character, index) =>
             <Character
-              {...rest}
+              history={history}
               key={character.name}
               character={character}
               selectCharacter={selectCharacter}
@@ -42,7 +42,11 @@ const LookupResult = ({ characters, selectCharacter, children, page, totalPages,
 LookupResult.propTypes = {
   characters: PropTypes.array.isRequired,
   selectCharacter: PropTypes.func.isRequired,
-  children: PropTypes.any.isRequired
+  children: PropTypes.any.isRequired,
+  page: PropTypes.number.isRequired,
+  totalPages: PropTypes.number.isRequired,
+  changePage: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired
 }
 
 export default LookupResult;

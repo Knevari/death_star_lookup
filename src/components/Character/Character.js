@@ -20,7 +20,8 @@ const Character = ({ character, selectCharacter, history }) => {
 
 Character.propTypes = {
   character: PropTypes.object.isRequired,
-  selectCharacter: PropTypes.func.isRequired
+  selectCharacter: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired
 }
 
 export default Character;

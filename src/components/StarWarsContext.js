@@ -8,6 +8,7 @@ const StarWarsContext = createContext();
 export class StarWarsProvider extends Component {
   constructor(props) {
     super(props);
+
     this.updateSelectedCharacter = async (selectedCharacter) => {
       await this.setState({ selectedCharacter });
       await this.getCharacterData();

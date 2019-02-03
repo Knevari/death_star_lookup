@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
 class InfoModal extends Component {
   state = {
@@ -26,6 +27,11 @@ class InfoModal extends Component {
       </div>
     );
   }
+}
+
+InfoModal.propTypes = {
+  title: PropTypes.any,
+  trigger: PropTypes.any.isRequired
 }
 
 export default InfoModal;
