@@ -4,7 +4,7 @@ import { Card, Button, CardTitle, CardBody, CardColumns } from 'reactstrap';
 import { NavLink } from "react-router-dom";
 
 const Favorites = ({ main }) => {
-  const title = !main ? <h3 className="app-title"><NavLink to="/">Death Star Lookup</NavLink></h3> : <h1 className="app-title">Favoritos</h1>
+  const title = !main ? <h3 className="app-title"><NavLink to="/">Death Star Lookup</NavLink></h3> : null
 
   return (
     <StarWarsConsumer>
